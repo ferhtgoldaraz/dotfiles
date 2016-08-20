@@ -1,0 +1,4 @@
+pane	prezto	1	:[tmux]	1	:*	0	:/Users/Fer/src/bbva	0	zsh	:
+pane	prezto	1	:[tmux]	1	:*	1	:/Users/Fer/src/bbva/webpack-playground	1	zsh	:
+window	prezto	1	1	:*	2491,127x35,0,0[127x17,0,0,0,127x17,0,18,1]
+state	prezto	

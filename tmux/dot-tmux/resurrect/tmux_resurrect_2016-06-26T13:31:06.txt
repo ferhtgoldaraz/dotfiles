@@ -1,0 +1,5 @@
+pane	prezto	1	:node	0	:-	0	:/Users/Fer/src/bbva/fondos-mencey	1	node	:gulp 
+pane	prezto	2	:zsh	1	:*	0	:/Users/Fer/src/bbva/fondos-mencey	1	zsh	:
+window	prezto	1	0	:-	c07d,127x35,0,0,0
+window	prezto	2	1	:*	c07e,127x35,0,0,1
+state	prezto	

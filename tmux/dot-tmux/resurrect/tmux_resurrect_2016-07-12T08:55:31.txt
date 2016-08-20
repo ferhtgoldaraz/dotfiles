@@ -1,0 +1,10 @@
+pane	prezto	1	:node	0	:#-	0	:/Users/Fer/src/bbva/ads-nuevo	1	node	:gulp 
+pane	prezto	1	:node	0	:#-	1	:/Users/Fer/src/bbva/ads-nuevo	0	zsh	:
+pane	prezto	2	:git	1	:*	0	:/Users/Fer/src/bbva/ads-viejo/maqueta	0	zsh	:
+pane	prezto	2	:git	1	:*	1	:/Users/Fer/src/bbva/ads-viejo	1	zsh	:
+pane	prezto	3	:zsh	0	:#	0	:/Users/Fer/src/bbva/fondos-mencey	0	node	:gulp 
+pane	prezto	3	:zsh	0	:#	1	:/Users/Fer/src/bbva/fondos-mencey	1	zsh	:
+window	prezto	1	0	:#-	4245,191x47,0,0[191x23,0,0,1,191x23,0,24,2]
+window	prezto	2	1	:*	424a,191x47,0,0[191x23,0,0,3,191x23,0,24,4]
+window	prezto	3	0	:#	424f,191x47,0,0[191x23,0,0,5,191x23,0,24,6]
+state	prezto	

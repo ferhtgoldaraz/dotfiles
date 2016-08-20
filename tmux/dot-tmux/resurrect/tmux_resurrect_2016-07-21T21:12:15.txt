@@ -1,0 +1,12 @@
+pane	prezto	1	:zsh	0	:#	0	:/Users/Fer/src/bbva/ads-viejo	0	zsh	:
+pane	prezto	1	:zsh	0	:#	1	:/Users/Fer/src/bbva/ads-viejo	1	zsh	:
+pane	prezto	2	:git	1	:*	0	:/Users/Fer/src/bbva/ads-viejo/maquetaBioconENP/front	1	node	:node /Users/Fer/.nvm/versions/node/v6.2.1/bin/webpack-dev-server --progress --colors
+pane	prezto	2	:git	1	:*	1	:/Users/Fer/src/bbva/ads-viejo/maquetaBioconENP/front	0	zsh	:
+pane	prezto	3	:zsh	0	:#-	0	:/Users/Fer/src/bbva/ads-nuevo	1	zsh	:
+pane	prezto	3	:zsh	0	:#-	1	:/Users/Fer/src/bbva/ads-nuevo	0	zsh	:
+pane	prezto	4	:zsh	0	:#	0	:/Users/Fer/src/bbva/fondos-mencey	1	zsh	:
+window	prezto	1	0	:#	a493,127x35,0,0[127x17,0,0,1,127x17,0,18,2]
+window	prezto	2	1	:*	a498,127x35,0,0[127x17,0,0,3,127x17,0,18,4]
+window	prezto	3	0	:#-	24a5,127x35,0,0[127x17,0,0,8,127x17,0,18,9]
+window	prezto	4	0	:#	606f,127x35,0,0,10
+state	prezto	

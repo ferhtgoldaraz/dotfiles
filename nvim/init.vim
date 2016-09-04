@@ -2,7 +2,7 @@
 " GENERAL
 "=================================================================
 
-" should not be necessary, but it may fix obscure issues                                   
+" should not be necessary, but it may fix obscure issues
 set nocompatible
 
 " set encoding to utf-8
@@ -20,10 +20,10 @@ let g:python3_host_prog = '/Users/Fer/.virtualenvs/neovim3/bin/python'
 
 " set true color support
 if has('termguicolors')
-    set termguicolors
+   set termguicolors
 endif
 
-" enable syntax highlighting 
+" enable syntax highlighting
 if has('syntax') && !exists('g:syntax_on')
     syntax enable
 endif
@@ -138,14 +138,25 @@ let mapleader=","
 " see what commands are being issued
 set showcmd
 
+" set ruler at 80 chars
+set colorcolumn=80
+
+" toggle nerdTree
+map <C-n> :NERDTreeToggle<CR>
+
 "=================================================================
 " VIM PLUG PLUGINS
 "=================================================================
 
 call plug#begin('~/.config/nvim/plugged')
 
-" nice color scheme
-Plug 'whatyouhide/vim-gotham'
+Plug 'whatyouhide/vim-gotham' " color scheme
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
+
+" let vim-airline use powerline patched font symbols
+let g:airline_powerline_fonts=1
 
 call plug#end()
 
@@ -154,5 +165,5 @@ call plug#end()
 "=================================================================
 
 " set color scheme
-colorscheme gotham
+colorscheme gotham256
 

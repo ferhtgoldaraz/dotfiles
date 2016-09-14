@@ -1,6 +1,6 @@
-"=================================================================
+"==========================================================================
 " GENERAL
-"=================================================================
+"==========================================================================
 
 " should not be necessary, but it may fix obscure issues
 set nocompatible
@@ -15,8 +15,8 @@ if has('autocmd')
 endif
 
 " set python runtime executables
-let g:python_host_prog = '/Users/Fer/.virtualenvs/neovim/bin/python'
-let g:python3_host_prog = '/Users/Fer/.virtualenvs/neovim3/bin/python'
+let g:python_host_prog = '/home/fer/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/home/fer/.pyenv/versions/neovim3/bin/python'
 
 " set true color support
 if has('termguicolors')
@@ -118,7 +118,7 @@ set sessionoptions-=options
 inoremap <c-u> <c-g>u<c-u>
 inoremap <c-w> <c-g>u<c-w>
 
-" always see one line above/bwlow the cursor
+" always see one line above/below the cursor
 if !&scrolloff
   set scrolloff=1
 endif
@@ -132,21 +132,62 @@ endif
 set relativenumber
 set number
 
-" set leader key for own custom keybindings
-let mapleader=","
-
 " see what commands are being issued
 set showcmd
 
 " set ruler at 80 chars
 set colorcolumn=80
 
-" toggle nerdTree
-map <C-n> :NERDTreeToggle<CR>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
 
-"=================================================================
+" move by ROW instead of by LINE
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+nnoremap <Up> g<Up>
+nnoremap <Down> g<Down>
+vnoremap <Up> g<Up>
+vnoremap <Down> g<Down>
+
+" let move by LINE as it would be for ROW
+nnoremap gj j
+nnoremap gk k
+vnoremap gj j
+vnoremap gk k
+nnoremap g<Up> <Up>
+nnoremap g<Down> <Down>
+vnoremap g<Up> <Up>
+vnoremap g<Down> <Down>
+
+" allow moving past end of line one character's worth
+set virtualedit=onemore 
+
+" allow the cursor to be moved from end of line to beginning of next
+" when using vim as other editors (with arrow keys)
+set whichwrap+=<,>,[,]
+
+"==========================================================================
+" MAPPINGS
+"==========================================================================
+
+" map leader, this way showcmd works
+map <Space> <Leader>
+map <Leader><Space> <Leader><Leader>
+
+" bigger key to write commands
+nmap <Return> :
+
+" better buffer navigation
+nmap <Leader><Up> <C-W><C-K>
+nmap <Leader><Left> <C-W><C-H>
+nmap <Leader><Down> <C-W><C-J>
+nmap <Leader><Right> <C-W><C-L>
+
+"==========================================================================
 " VIM PLUG PLUGINS
-"=================================================================
+"==========================================================================
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -154,16 +195,80 @@ Plug 'whatyouhide/vim-gotham' " color scheme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'airblade/vim-gitgutter'
+Plug 'pangloss/vim-javascript'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/vim-easyoperator-line'
+Plug 'haya14busa/vim-easyoperator-phrase'
+Plug 'godlygeek/tabular'
+Plug 'mattn/emmet-vim'
+Plug 'tpope/vim-endwise'
+Plug 'cohama/lexima.vim'
+Plug 'rking/ag.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'tomtom/tcomment_vim'
+Plug 'sjl/gundo.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Shougo/deoplete.nvim'
 
 " let vim-airline use powerline patched font symbols
 let g:airline_powerline_fonts=1
 
 call plug#end()
 
-"=================================================================
+" toggle nerdTree
+map <Leader>k :NERDTreeToggle<CR>
+
+" use ag instead of ack
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+
+" enable deoplete at startup
+let g:deoplete#enable_at_startup=1
+
+"---- options --------------------------------------
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Align line-wise comment delimiters flush left instead of following
+" code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Allow commenting and inverting empty lines (useful when commenting
+" a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+"----- sync NERTree view to current buffer ------------------------
+
+" " returns true iff is NERDTree open/active
+" function! RC:isNTOpen()
+"     return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+" endfunction
+"
+" " calls NERDTreeFind iff NERDTree is active, current window contains a
+" " modifiable file, and we're not in vimdiff
+" function! RC:syncTree()
+"     if &modifiable && rc:isNTOpen() && strlen(expand('%')) > 0 && !&diff
+"         NERDTreeFind
+"         wincmd p
+"     endif
+" endfunction
+"
+" autocmd BufEnter * call rc:syncTree()
+
+"==========================================================================
 " POST-PLUGIN OPTIONS
-"=================================================================
+"==========================================================================
 
 " set color scheme
-colorscheme gotham256
+colorscheme gotham
 

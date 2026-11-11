@@ -74,6 +74,18 @@ Three cases stay outside it:
 
 A graphical session takes the new order at the next login.
 
+## Checks
+
+Run them from `~`, through the links. Each one exits 0 and prints nothing.
+
+```sh
+cd ~
+shellcheck -s bash -x -o all .bashrc .bash_profile
+shfmt -d -s .bashrc .bash_profile
+shellcheck -s sh -x -o all .config/shell/env.sh
+shfmt -d -s .config/shell/env.sh
+```
+
 ## Rules
 
 - The clone is live. Keep it on `master`; use `git worktree add` for other

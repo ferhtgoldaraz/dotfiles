@@ -50,11 +50,29 @@ file. A new CachyOS user has three: `.bash_profile`, `.bashrc` and
 `git restore home`: adopt replaces the tracked version with the file from the
 machine, and the restore brings the tracked version back.
 
-The files expect mise at `~/.local/bin/mise`, the rustup `env` file at
-`~/.local/share/cargo/env`, the Vite+ `env` file at `~/.config/vite-plus/env`,
-and a clone of `git@github.com:ferhtgoldaraz/zsh-shims.git` at
-`/home/fer/code/zsh-shims`. Until they exist, shells print errors at startup,
-Zim loads no module, and a POSIX `sh` that reads `~/.profile` exits.
+The files expect mise at `~/.local/bin/mise`, the Vite+ `env` file at
+`~/.config/vite-plus/env`, and a clone of
+`git@github.com:ferhtgoldaraz/zsh-shims.git` at `/home/fer/code/zsh-shims`.
+Until they exist, shells print errors at startup, Zim loads no module, and a
+POSIX `sh` that reads `~/.profile` exits.
+
+## PATH
+
+`home/.config/shell/env.sh` is the one file that adds user directories to
+`PATH` for bash, zsh and POSIX `sh`. It exports the variables of
+`.config/environment.d/10-shared.conf`, then puts each directory of its list in
+front of `PATH` unless `PATH` already holds it, so a second run changes
+nothing. `.profile`, `.bashrc` and `.config/zsh/.zshenv` source it. Add a
+directory to its list, not to those files.
+
+Three cases stay outside it:
+
+- `bash -c` and `sh -c` read no startup file and keep the `PATH` they inherit.
+- fish keeps its own setup in `.config/fish/config.fish`.
+- An interactive bash or zsh then runs `mise activate`, which replaces the
+  shims directory with the directories of the installed tools.
+
+A graphical session takes the new order at the next login.
 
 ## Rules
 

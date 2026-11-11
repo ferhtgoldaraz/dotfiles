@@ -1,13 +1,5 @@
 typeset -gU cdpath fpath mailpath
 
-path=(
-    "$HOME/.local/bin"
-    "$HOME/.grok/bin"
-    "$CARGO_HOME/bin"
-    "$GOPATH/bin"
-    $path
-)
-
 /usr/bin/mkdir -p "${HISTFILE:h}" "${GNUPGHOME}"
 
 setopt HIST_IGNORE_ALL_DUPS

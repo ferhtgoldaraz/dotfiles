@@ -1,22 +1,4 @@
-if [[ -r ${HOME}/.config/environment.d/10-shared.conf ]]; then
-	set -a
-	. "${HOME}/.config/environment.d/10-shared.conf"
-	set +a
-fi
-
-prepend_path() {
-	if [[ -d $1 && :${PATH}: != *":$1:"* ]]; then
-		PATH=$1:${PATH}
-	fi
-}
-prepend_path "${GOPATH}/bin"
-prepend_path "${HOME}/.grok/bin"
-prepend_path "${HOME}/.local/share/mise/shims"
-export PATH
-
-. "${HOME}/.local/share/cargo/env"
-prepend_path "${HOME}/.local/bin"
-unset -f prepend_path
+. "${HOME}/.config/shell/env.sh"
 . "${HOME}/.config/vite-plus/env"
 
 [[ $- == *i* ]] || return 0

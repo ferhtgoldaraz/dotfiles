@@ -65,10 +65,14 @@ front of `PATH` unless `PATH` already holds it, so a second run changes
 nothing. `.profile`, `.bashrc` and `.config/zsh/.zshenv` source it. Add a
 directory to its list, not to those files.
 
-Three cases stay outside it:
+Four cases stay outside it:
 
-- `bash -c` and `sh -c` read no startup file and keep the `PATH` they inherit.
+- `bash -c` and `sh -c` normally read no startup file and keep the `PATH` they
+  inherit.
 - fish keeps its own setup in `.config/fish/config.fish`.
+- The Vite+ `env` file, which `.profile`, `.bashrc`, `.zshenv` and `.zshrc`
+  source after it, moves `~/.local/share/vite-plus/bin` to the front and
+  appends `~/.local/share/vite-plus/fallback-bin`.
 - An interactive bash or zsh then runs `mise activate`, which replaces the
   shims directory with the directories of the installed tools.
 

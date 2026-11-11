@@ -1,0 +1,55 @@
+[tools]
+gemini = { version = "latest", allow_builds = ["@github/keytar", "node-pty"] }
+# Verified 2026-11-08: tarball sha512 = SLSA provenance subject (bitwarden/clients publish-cli.yml,
+# tag cli-v2026.10.1 @ 91214c3). Flagged only because 2026.5.0/6.0 used npm staged approval.
+"npm:@bitwarden/cli" = { version = "latest", trust_policy_excludes = ["@bitwarden/cli@2026.10.1"] }
+"npm:@playwright/cli" = "latest"
+"npm:chrome-devtools-mcp" = "latest"
+"npm:@googleworkspace/cli" = "latest"
+usage = { version = "latest", workflow = "publish-cli.yml" }
+"github:casey/just" = "latest"
+"npm:wrangler" = "latest"
+"github:ente-io/ente" = { version = "cli-v0.3.0", exe = "ente" }
+"npm:neonctl" = "latest"
+"npm:@posthog/cli" = "latest"
+"npm:@sentry/cli" = "3.8.2"
+bitwarden-secrets-manager = "2.1.0"
+"npm:playwright-core" = "latest"
+opentofu = "latest"
+bun = "1.4.4"
+ruff = "latest"
+python = "latest"
+act = "latest"
+# Verified 2026-11-08: chromium-bidi moved into Chromium and is published by the Chrome for Testing
+# pipeline without npm provenance; puppeteer-core@25.16.0 (provenance-signed) pins this exact version.
+"npm:@mermaid-js/mermaid-cli" = { version = "latest", trust_policy_excludes = ["chromium-bidi@157.0.8090-0"] }
+taplo = "0.10.0"
+shfmt = "latest"
+yamlfmt = "0.21.0"
+"npm:prettier" = "latest"
+"pipx:mdformat" = "1.0.0"
+shellcheck = "latest"
+"npm:@probelabs/maid" = "latest"
+"npm:@mermaid-js/parser" = "latest"
+"npm:mcp-mermaid" = { version = "latest", trust_policy_excludes = ["cytoscape@3.34.1"] }
+actionlint = "1.7.12"
+jq = "1.8.2"
+"github:openclaw/gogcli" = "latest"
+node = "latest"
+uv = "latest"
+pnpm = "latest"
+gh = "latest"
+flyctl = "latest"
+"npm:@playwright/mcp" = "latest"
+
+[env]
+# Reuse the existing Linux login keyring; avoid a separate gogcli password.
+GOG_KEYRING_SERVICE_NAME = "login"
+PUPPETEER_EXECUTABLE_PATH = "/home/fer/.cache/ms-playwright/chromium-1234/chrome-linux64/chrome"
+
+[settings]
+not_found_auto_install = false
+activate_aggressive = true
+
+[settings.status]
+missing_tools = "always"

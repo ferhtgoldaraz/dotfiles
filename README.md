@@ -87,7 +87,7 @@ cd ~
 shellcheck -s bash -x -o all .bashrc .bash_profile
 shfmt -d -s .bashrc .bash_profile
 shellcheck -s sh -x -o all .config/shell/env.sh
-shfmt -d -s .config/shell/env.sh
+shfmt -ln posix -d -s .config/shell/env.sh
 ```
 
 ## Rules
